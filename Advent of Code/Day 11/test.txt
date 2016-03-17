@@ -1,0 +1,7 @@
+hijklmmn False
+abbceffg False
+abbcegjk False
+abcdefgh False
+abcdffaa True
+ghijklmn False
+ghjaabcc True
