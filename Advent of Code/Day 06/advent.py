@@ -1,6 +1,5 @@
-instructions = open('input.txt')
-lcount = 0
-bcount = 0
+instructions = open('Day 06\input.txt')
+lcount, bcount = 0, 0
 lights = [[False for i in range(1000)] for i in range(1000)]
 blights = [[0 for i in range(1000)] for i in range(1000)]
 for line in instructions:

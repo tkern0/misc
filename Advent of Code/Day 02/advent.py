@@ -1,7 +1,6 @@
-presents = open('input.txt')
+presents = open('Day 02\input.txt')
 area = [0, 0, 0]
-tarea = 0
-tribbon = 0
+tarea, tribbon = 0, 0
 for line in presents:
     l, w, h = line.split("x")
     l, w, h = int(l), int(w), int(h)

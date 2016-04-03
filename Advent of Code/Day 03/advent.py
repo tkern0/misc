@@ -1,6 +1,5 @@
-dirs = open('input.txt').read()
-x = 0
-y = 0
+dirs = open('Day 03\input.txt').read()
+x, y = 0, 0
 houses = []
 for i in range(0,len(dirs)):
     if (x, y) not in houses: houses.append((x, y))
@@ -13,11 +12,8 @@ for i in range(0,len(dirs)):
         break
 print("Santa visited", len(houses), "houses in the first year")
 
-x = 0
-y = 0
 houses = [(x, y)]
-rx = 0
-ry = 0
+x, y, rx, ry = 0, 0, 0, 0
 for i in range(0,len(dirs)):
     if i % 2 == 0:
         if dirs[i] == "^": y += 1
@@ -38,4 +34,3 @@ for i in range(0,len(dirs)):
     if (x, y) not in houses: houses.append((x, y))
     if (rx, ry) not in houses: houses.append((rx, ry))
 print("Santa and Robo-Santa visited", len(houses), "houses in the second year")
-

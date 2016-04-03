@@ -16,7 +16,7 @@ def find_happy(aPerson, bPerson):
     if (aPerson, bPerson) in happy: return happy[(aPerson, bPerson)]
     else: return happy[(bPerson, aPerson)]
 
-happy, people = format_input(open("input.txt"))
+happy, people = format_input(open("Day 13\input.txt"))
 for perm in permutations(people, len(people)):
     currentHappy = find_happy(perm[0], perm[-1]) #TODO: Make it work
     for i in range(len(perm) - 1):

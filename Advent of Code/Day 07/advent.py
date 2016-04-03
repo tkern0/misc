@@ -1,7 +1,6 @@
-instructions = open("input.txt")
-wires = []
-solved = []
-values = []
+instructions = open("Day 07\input.txt")
+wires, solved, values = [], [], []
+# HOW DOES THIS EVEN WORK????
 for line in instructions:
     temp = line.split(" ")
     if "AND" in temp or "OR" in temp or "LSHIFT" in temp or "RSHIFT" in temp:
