@@ -30,7 +30,7 @@ def advance_step(state):
                 if nstate == 3: newLights[x][y] = True
     return newLights
 
-def formated(state): # Used for debugging, prints in same formaat as input
+def formated(state): # Used for debugging, prints in same format as input
     formatedList = ["" for _ in range(100)]
     formatedString = ""
     for x in range(len(state)):
@@ -38,6 +38,7 @@ def formated(state): # Used for debugging, prints in same formaat as input
             formatedList[x] += "#" if y else "."
     for i in formatedList: formatedString += "\n" + i
     return formatedString
+
 lights = format_input(open("Day 18\\input.txt"))
 print(get_neighbor_states(1, 0, lights))
 # print(formated(lights))
