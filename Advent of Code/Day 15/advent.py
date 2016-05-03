@@ -17,7 +17,7 @@ def get_stat(ingr, stat):
     # Flavor : 2
     # Texture: 3
     # Calories: 4
-    return info[ingr][stat] # This wan't working in the other function so I made it it's own function
+    return info[ingr][stat] # This wans't working in the other function so I made it it's own function
 
 def get_score(ingr, amount):
     fullIngrStats = []
