@@ -1,5 +1,5 @@
-steps = 1
-file = File.open("Advent of Code/Day 18/test.txt").readlines
+steps = 100
+file = File.open("Advent of Code/Day 18/input.txt").readlines
 $size = file.length
 
 # Turns input into hash array with empty border
@@ -49,6 +49,7 @@ def advance(state)
             end
         end
     end
+    return newState
 end
 
 def count_true(state)
@@ -61,12 +62,8 @@ end
 
 state = format_input(file)
 
-p count_true(state)
-puts format_state(state)
-
 for _ in 1..steps
     state = advance(state)
 end
 
 p count_true(state)
-puts format_state(state)
