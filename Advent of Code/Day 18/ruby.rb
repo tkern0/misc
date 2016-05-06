@@ -6,43 +6,34 @@ $size = file.length
 def format_input(startState)
     state = Hash.new(false)
     for y in 0..$size - 1 # Because it goes line by line "y" comes first here
-    	for x in 0..$size - 1
-			state[[x + 1, y + 1]] = true if startState[y].split("")[x] == "#"
-    	end
+        for x in 0..$size - 1
+            state[[x + 1, y + 1]] = true if startState[y].split("")[x] == "#"
+        end
     end
     return state
 end
 
-# Wasn't working in "format_state()
-def get_cell(x, y, state)
-    return state[[x, y]]
-end
-
 # Formats hash array the same way as input
 def format_state(state)
-	formated = ""
-	for y in 1..$size # Builds line by line, so "y" comes first
-		for x in 1..$size
-			if get_cell(x, y, state)
-				formated << "#"
-			else
-				formated << "."
-			end
-		end
-		formated << "\n"
-	end
-	return formated
+    formated = ""
+    for y in 1..$size # Builds line by line, so "y" comes first
+        for x in 1..$size
+            state[[x, y]]? (formated << "#") : (formated << ".")
+        end
+        formated << "\n"
+    end
+    return formated
 end
 
 # Counts how many neighbours are "true"
 def get_neighbours(x, y, state)
-	count = 0
-	for ix in x - 1..x + 1
-		for iy in y - 1..y + 1
-			count += 1 if state[[ix, iy]] and not (ix == x and iy == y)
-		end
-	end
-	return count
+    count = 0
+    for ix in x - 1..x + 1
+        for iy in y - 1..y + 1
+            count += 1 if state[[ix, iy]] and not (ix == x and iy == y)
+        end
+    end
+    return count
 end
 
 # Advances "state" by one step each time it is called
@@ -60,12 +51,22 @@ def advance(state)
     end
 end
 
+def count_true(state)
+    count = 0
+    state.each do |key, value|
+        count += 1 if value
+    end
+    return count
+end
+
 state = format_input(file)
 
-print(format_state(state))
+p count_true(state)
+puts format_state(state)
 
 for _ in 1..steps
     state = advance(state)
 end
 
-print(format_state(state))
+p count_true(state)
+puts format_state(state)
