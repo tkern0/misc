@@ -1,5 +1,5 @@
 steps = 100
-file = File.open("Advent of Code/Day 18/input.txt").readlines
+file = File.open("Day 18\\input.txt").readlines
 $size = file.length
 
 # Turns input into hash array with empty border
@@ -52,6 +52,14 @@ def advance(state)
     return newState
 end
 
+def stuckify(stuckState)
+    stuckState[[1, 1]] = true
+    stuckState[[1, $size]] = true
+    stuckState[[$size, 1]] = true
+    stuckState[[$size, $size]] = true
+    return stuckState
+end
+
 def count_true(state)
     count = 0
     state.each do |key, value|
@@ -61,9 +69,14 @@ def count_true(state)
 end
 
 state = format_input(file)
+stuckState = stuckify(format_input(file))
 
 for _ in 1..steps
     state = advance(state)
+    stuckState = stuckify(advance(stuckState))
 end
 
-p count_true(state)
+puts "Cells alive without stuck cells:"
+puts count_true(state)
+puts "Cells alive with stuck cells:"
+puts count_true(stuckState)
