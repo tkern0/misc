@@ -1,5 +1,10 @@
+def join_molecule(split):
+    join = ""
+    for element in split: join += str(element)
+    return join
+
 # Turns the input into a bunch of useful vars
-replacements, recipe, splitMolecule, replace = open("Advent of Code/Day 19/input.txt"), {}, [], []
+replacements, recipe, splitMolecule, replaced = open("Advent of Code/Day 19/input.txt"), {}, [], []
 for line in replacements: # Determines recipes and the molecule
     splitLine = line.strip().split(" ")
     if len(splitLine) == 3:
@@ -10,4 +15,10 @@ for char in range(len(molecule)): # Splits molecule into each element
     if molecule[char:char + 1].isupper():
         if molecule[char + 1:char + 2].isupper(): splitMolecule.append(molecule[char:char + 1])
         else: splitMolecule.append(molecule[char:char + 2])
-for element in splitMolecule: replace.append(element in recipe) # Finds what molecules can be replaced
+for i in range(len(splitMolecule)): # Works out part 1
+    if splitMolecule[i] in recipe:
+        for replace in recipe[splitMolecule[i]]:
+            newMolecule = list(splitMolecule)
+            newMolecule[i] = replace
+            if not join_molecule(newMolecule) in replaced: replaced.append(join_molecule(newMolecule))
+print("Part 1:", len(replaced))
