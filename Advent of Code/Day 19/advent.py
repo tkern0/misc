@@ -1,5 +1,5 @@
 # Turns the input into a bunch of useful vars
-replacements, recipe, reverseRecipe, splitMolecule, replace = open("Advent of Code/Day 19/input.txt"), {}, {}, [], []
+replacements, recipe, reverseRecipe, splitMolecule, replaced = open("Advent of Code/Day 19/input.txt"), {}, {}, [], []
 for line in replacements: # Determines recipes and the molecule
     splitLine = line.strip().split(" ")
     if len(splitLine) == 3:
@@ -20,14 +20,16 @@ for i in range(len(splitMolecule)): # Works out part 1
             for element in newMolecule: join += str(element)
             if not join in replaced: replaced.append(join)
 print("Part 1:", len(replaced))
-# recursive function:
-# does 1 reverse replacement everywhere possible
-# calls itself on new molecule
-# count steps somehow
-#
-# get min + max len of outputs
-# start at [0:], check if following chars, from min --> max len, are possible recipe output
-# if so, replace with input, go on to next one
-# then start at [1:]
-# repeat
-for i in range(len(molecule)):
+
+# Works, but not to reduce to "e"
+rCount = 0
+def replaceMolecule(molecule):
+    for i in range(len(molecule)):
+        for j in reverseRecipe:
+            if molecule[i:].startswith(j):
+                global rCount
+                rCount += 1
+                molecule, _ = replaceMolecule(reverseRecipe[j] + molecule[i + len(j):])
+    return molecule, rCount
+
+print(replaceMolecule(molecule))
