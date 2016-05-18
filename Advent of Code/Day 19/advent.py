@@ -1,3 +1,4 @@
+import random
 # Turns the input into a bunch of useful vars
 replacements, recipe, reverseRecipe, splitMolecule, replaced = open("Advent of Code/Day 19/input.txt"), {}, {}, [], []
 for line in replacements: # Determines recipes and the molecule
@@ -23,13 +24,21 @@ print("Part 1:", len(replaced))
 
 # Works, but not to reduce to "e"
 rCount = 0
-def replaceMolecule(molecule):
+def replaceMolecule(molecule, shuffled):
     for i in range(len(molecule)):
-        for j in reverseRecipe:
+        for j in shuffled:
             if molecule[i:].startswith(j):
                 global rCount
                 rCount += 1
-                molecule, _ = replaceMolecule(reverseRecipe[j] + molecule[i + len(j):])
-    return molecule, rCount
+                molecule = replaceMolecule(reverseRecipe[j] + molecule[i + len(j):], shuffled)
+    return molecule
 
-print(replaceMolecule(molecule))
+# out = ""
+# keys = list(reverseRecipe.keys())
+# while not out == "e":
+#     rCount = 0
+#     random.shuffle(keys)
+#     out = replaceMolecule(molecule, keys)
+#     print(out, rCount)
+
+print(replaceMolecule(molecule, reverseRecipe), rCount)
