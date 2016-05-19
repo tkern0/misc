@@ -22,23 +22,45 @@ for i in range(len(splitMolecule)): # Works out part 1
             if not join in replaced: replaced.append(join)
 print("Part 1:", len(replaced))
 
-# Works, but not to reduce to "e"
+# Brute force:
+# 1. Start with string ("e")
+# 2. Find every possible replacement
+# 3. Keep these stored
+# 4. If one replacement == molecule break loop
+# 5. Goto 1 with each replacement as string
+
 rCount = 0
-def replaceMolecule(molecule, shuffled):
-    for i in range(len(molecule)):
-        for j in shuffled:
-            if molecule[i:].startswith(j):
-                global rCount
-                rCount += 1
-                molecule = replaceMolecule(reverseRecipe[j] + molecule[i + len(j):], shuffled)
-    return molecule
+def find_replacements(replaceString):
+    global rCount
+    rCount += 1
+    replaced = []
+    for i in range(len(replaceString)):
+        for j in reverseRecipe
+            if replaceString[i:].startswith(j):
+                if molecule[i + 1].isupper(): replaced.append(molecule[:i] + reverseRecipe[j] + molecule[i+1:])
+                else: replcaed.append(molecule[:i] + reverseRecipe[j] + molecule[i+2])
+    if molecule in replaced: return rCount
 
-# out = ""
-# keys = list(reverseRecipe.keys())
-# while not out == "e":
-#     rCount = 0
-#     random.shuffle(keys)
-#     out = replaceMolecule(molecule, keys)
-#     print(out, rCount)
 
-print(replaceMolecule(molecule, reverseRecipe), rCount)
+# Reverse engineering (Doesn't Work)
+# rCount = 0
+# def replaceMolecule(molecule, shuffled):
+#     for i in range(len(molecule)):
+#         for j in shuffled:
+#             if molecule[i:].startswith(j):
+#                 global rCount
+#                 rCount += 1
+#                 if molecule[i + 1].isupper(): newMolecule = molecule[:i] + reverseRecipe[j] + molecule[i+1:]
+#                 else: newMolecule = molecule[:i] + reverseRecipe[j] + molecule[i+2:]
+#                 molecule = replaceMolecule(newMolecule, shuffled)
+#     return molecule
+#
+# # out = ""
+# # keys = list(reverseRecipe.keys())
+# # while not out == "e":
+# #     rCount = 0
+# #     random.shuffle(keys)
+# #     out = replaceMolecule(molecule, keys)
+# #     print(out, rCount)
+#
+# print(replaceMolecule(molecule, reverseRecipe), rCount)
