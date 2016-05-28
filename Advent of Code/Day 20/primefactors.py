@@ -1,18 +1,17 @@
-# Example num: 24
-# All Factors:
-# 1 2 3 4 6 12 24
-# Sum = 60
-# Prime factors:
-# 2 * 2 * 2 * 3
-# 2^3 * 3^1
-# Sum = (2^0 + 2^1 + 2^2 + 2^3) * (3^0 + 3^1) = 60
+findNum, i = 33100000/10, 0
 
-def prime_factor(n, p):
-    f = []
-    for i in p:
+def sum_factors(n):
+    f, i, s = [], 2, 1
+    while i ** 2 <= n: # Prime factors
         if n % i == 0:
-            if n / i == 1: return n
-            else: f.append(prime_factor(n/i, p))
-    else: return f
+            n //= i
+            f.append(i)
+        else: i += 1
+    if n > 1: f.append(n)
+    while len(f) > 0: # Factor sum calculation using prime factors
+        s *= sum([f[0] ** i for i in range(f.count(f[0]) + 1)])
+        f = f[f.count(f[0]):]
+    return s
 
-print(prime_factor(12, [2, 3, 5, 7]))
+while sum_factors(i) < findNum: i += 1
+print(i)
