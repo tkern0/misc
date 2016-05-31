@@ -1,4 +1,4 @@
-dirs = open('Day 01\input.txt').read()
+dirs = open('Advent of Code/Day 01/input.txt').read()
 floor = 0
 basement = False
 for i in range(len(dirs)):
