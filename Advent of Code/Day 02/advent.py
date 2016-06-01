@@ -1,4 +1,4 @@
-presents = open('Day 02\input.txt')
+presents = open('Advent of Code/Day 02/input.txt')
 area = [0, 0, 0]
 tarea, tribbon = 0, 0
 for line in presents:

@@ -1,0 +1,3 @@
+area, ribbon = 0, 0
+for line in open('Advent of Code/Day 02/input.txt'): area, ribbon = area + 2 * sum([int(line.split("x")[0]) * int(line.split("x")[1]), int(line.split("x")[0]) * int(line.split("x")[2]), int(line.split("x")[1]) * int(line.split("x")[2])]) + min([int(line.split("x")[0]) * int(line.split("x")[1]), int(line.split("x")[0]) * int(line.split("x")[2]), int(line.split("x")[1]) * int(line.split("x")[2])]), ribbon + 2 * min([int(line.split("x")[0]) + int(line.split("x")[1]), int(line.split("x")[0]) + int(line.split("x")[2]), int(line.split("x")[1]) + int(line.split("x")[2])]) + int(line.split("x")[0]) * int(line.split("x")[1]) * int(line.split("x")[2])
+print(area, ribbon)
