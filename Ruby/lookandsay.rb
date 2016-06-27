@@ -13,5 +13,3 @@ def look_and_say(n)
 end
 
 p look_and_say("3112")
-# "202190"
-# what
