@@ -7,8 +7,8 @@ shop["R"].extend([{"A":0, "D": 0, "C":0}, {"A":0, "D": 0, "C":0}])
 def fight(boss, player):
     pTurn = False
     while boss["H"] > 0 and player["H"] > 0:
-        if pTurn: player["H"] -= boss["D"] - player["A"]
-        else: boss["H"] -= player["D"] - boss["A"]
+        if pTurn: player["H"] -= max(boss["D"] - player["A"], 1)
+        else: boss["H"] -= max(player["D"] - boss["A"], 1)
         pTurn = not pTurn
     return pTurn
 
