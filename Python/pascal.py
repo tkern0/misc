@@ -5,6 +5,11 @@ def pascal(n, l = [[1], [1, 1]]):
         l.append(x)
     return l
 
-def pascal_print(l): print("\n".join((" ".join(str(j) for j in i) for i in l)))
+def print_centered(n):
+  l = []
+  for i in n: l.append(str(i))
+  m = len(l[-1])
+  for i in l:
+    print(" " * int((m - len(i))/2) + i + " " * (int((m - len(i))/2) + 1))
 
-pascal_print(pascal(5))
+print_centered(pascal(5))
