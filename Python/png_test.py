@@ -3,10 +3,7 @@ import png
 def safe(list):
     new_list = []
     for i in list:
-        t = i
-        while t > 255: t -= 255
-        while t < 0: t += 255
-        new_list.append(int(t))
+        new_list.append(int(i % 256))
     return new_list
 
 # w, h = 256, 256
