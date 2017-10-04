@@ -6,7 +6,7 @@ b = enchant.Dict("en_GB")
 #         print("".join(i))
 
 f = set()
-for i in itertools.permutations((["A", "V"], ["N", "Z"], ["G"], ["L", "T"], ["E", "M", "W"])):
+for i in itertools.permutations((["A", "V"], ["N", "Z"], ["G", "D"], ["L", "T"], ["E", "M", "W"])):
     for j in itertools.product(range(3), repeat=5):
         s = ""
         for k in range(5):
@@ -16,9 +16,17 @@ for i in itertools.permutations((["A", "V"], ["N", "Z"], ["G"], ["L", "T"], ["E"
             f.add(s)
 # ANGLE
 # ANGEL
+# ANTED
 # AGENT
+# ALDEN
+# NELDA
+# ZELDA
+# DANTE
 # GALEN
 # GLAZE
 # GLEAN
 # LANGE
+# LAZED
+# LADEN
 # TWANG
+# ELAND
