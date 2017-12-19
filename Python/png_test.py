@@ -23,8 +23,8 @@ for row in out[2]:
     current_row = []
     for i in range(0, len(row), 4):
         x = int(i/4)
-        r, b, g = row[i], row[i+1], row[i+2]
-        current_row.append(safe([int((x+y)/16)^r, int((x+y)/16)^b, int((x+y)/16)^g]))
+        r, g, b = row[i], row[i+1], row[i+2]
+        current_row.append(safe([int((x+y)/16)^r, int((x+y)/16)^g, int((x+y)/16)^b]))
     pixels.append(current_row)
     y += 1
     print(y)

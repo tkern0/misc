@@ -2,17 +2,14 @@ from logipy import logi_led
 from threading import Thread
 from time import sleep
 
+def dec_to_percent(num): return min(int(num*100/255), 100)
+def hex_to_percent(num): return dec_to_percent(int(num, 16))
 
 class LEDControler():
     def __init__(self):
         logi_led.logi_led_init()
         sleep(1)
-        self.device = "A"
         self.threads = {"K": Thread(), "M": Thread()}
-        self.mouse_colour = {"R": 100, "G": 100, "B": 100}
-        self.kb_colour = 100
-        logi_led.logi_led_set_target_device(7)
-        logi_led.logi_led_set_lighting(100, 100, 100)
 
     # Flashes KB light
     # Hidden method because it's used for threading
@@ -34,7 +31,7 @@ class LEDControler():
                                  defaultColour["G"],
                                  defaultColour["B"])
 
-    # Sets the device using Logitech's arbitrayr numbers
+    # Sets the device using Logitech's arbitray numbers
     # Nice to use one function for this instead of two
     # Anything that changes colour should request device, so this remains hidden
     def _set_device(self, device):
@@ -121,8 +118,8 @@ class LEDControler():
 
     # Just a nicer way to get info from outside the class
     def get_device(self): return self.device
-    def get_mouse_colour(self): return self.mouse_colour
-    def get_kb_colour(self): return self.kb_colour
+    def get_mouse_colour(self): return self.mouse_colour or None
+    def get_kb_colour(self): return self.kb_colour or None
 
     # The methods 'flash_colour()' and 'transition_colour()' start threads,
     #  which allows the main program to continue, so you might need to use this
