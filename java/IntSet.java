@@ -3,8 +3,14 @@ class IntSet {
   private int currentSize;
   private int maxSize;
 
-  public static void main() {
-
+  public static void main(String[] args) {
+    IntSet iSet = new IntSet();
+    for (int i=0; i<5; i++) {
+      iSet.add(i);
+    }
+    System.out.println(iSet.hasElement(3));
+    iSet.remove(3);
+    System.out.println(iSet.hasElement(3));
   }
 
   public IntSet() {
@@ -27,13 +33,16 @@ class IntSet {
 
   public void remove(int x) {
     int[] safeElements = new int[maxSize];
+    int newSize = 0;
     for (int i=0; i<currentSize; i++) {
       if (data[i] != x) {
         // data.remove() doesn't work :(
-        safeElements[safeElements.length] = data[i];
+        safeElements[newSize] = data[i];
+        newSize++;
       }
     }
     data = safeElements;
+    currentSize = newSize;
   }
 
   public boolean hasElement(int x) {
