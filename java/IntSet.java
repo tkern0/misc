@@ -4,19 +4,31 @@ class IntSet {
   private int maxSize;
 
   public static void main(String[] args) {
-    IntSet iSet = new IntSet();
+    IntSet iSet1 = new IntSet();
+    IntSet iSet2 = new IntSet();
     for (int i=0; i<5; i++) {
-      iSet.add(i);
+      iSet1.add(i);
+      iSet2.add(i*2);
     }
-    System.out.println(iSet.hasElement(3));
-    iSet.remove(3);
-    System.out.println(iSet.hasElement(3));
+    System.out.println(iSet1.hasElement(3));
+    iSet1.remove(3);
+    System.out.println(iSet1.hasElement(3));
+    IntSet iSet3 = iSet1.intersection(iSet2);
+    for (int i=0; i<10; i++) {
+      if (iSet3.hasElement(i)) {
+        System.out.println(i + " yes");
+      } else {
+        System.out.println(i + " no");
+      }
+    }
   }
 
   public IntSet() {
     data = new int[100];
     maxSize = 100;
   }
+
+  public int getSize() {return currentSize;}
 
   public void add(int x) {
     if (currentSize >= maxSize) {
@@ -50,5 +62,21 @@ class IntSet {
       if (data[i] == x) return true;
     }
     return false;
+  }
+
+  public IntSet intersection(IntSet otherSet) {
+    IntSet output = new IntSet();
+    for (int i=0; i<currentSize; i++) {
+      if (otherSet.hasElement(data[i])) {
+        output.add(data[i]);
+      }
+    }
+    return output;
+  }
+
+  public IntSet union(IntSet otherSet) {
+    IntSet output = new IntSet();
+    // do stuff
+    return output;
   }
 }
