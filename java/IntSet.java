@@ -6,13 +6,17 @@ class IntSet {
   public static void main(String[] args) {
     IntSet iSet1 = new IntSet();
     IntSet iSet2 = new IntSet();
+    // Make two sets, one with 0->4, one with evens 0->8
     for (int i=0; i<5; i++) {
       iSet1.add(i);
       iSet2.add(i*2);
     }
+    // Is 3 in set 1 (true)
     System.out.println(iSet1.hasElement(3));
     iSet1.remove(3);
+    // Is 3 still in set 1 (false)
     System.out.println(iSet1.hasElement(3));
+    // Find and print intersection of sets (0, 2, 4)
     IntSet iSet3 = iSet1.intersection(iSet2);
     for (int i=0; i<10; i++) {
       if (iSet3.hasElement(i)) {
@@ -39,22 +43,18 @@ class IntSet {
       }
       data = tempData;
     }
+
     data[currentSize] = x;
     currentSize++;
   }
 
   public void remove(int x) {
-    int[] safeElements = new int[maxSize];
-    int newSize = 0;
     for (int i=0; i<currentSize; i++) {
-      if (data[i] != x) {
-        // data.remove() doesn't work :(
-        safeElements[newSize] = data[i];
-        newSize++;
+      if (data[i] == x) {
+        currentSize--;
+        data[i] = data[currentSize];
       }
     }
-    data = safeElements;
-    currentSize = newSize;
   }
 
   public boolean hasElement(int x) {
