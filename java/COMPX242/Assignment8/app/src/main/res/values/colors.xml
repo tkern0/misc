@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#101010</color>
+    <color name="button">#404040</color>
+    <color name="text">#DDDDDD</color>
+    <color name="goalRed">#FF4136</color>
+    <color name="goalWhite">#DDDDDD</color>
+    <color name="obstacle">#2ECC40</color>
+    <color name="player">#85144B</color>
+    <color name="flingArea">#202020</color>
+    <color name="tableRowSeparator">#909090</color>
+    <color name="textDialog">#000000</color>
+</resources>

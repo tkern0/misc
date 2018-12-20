@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">A5Project</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="button_clear">Clear Message</string>
+    <string name="button_sort">Sort</string>
+    <string name="heading_sort">Enter values to sort:</string>
+    <string name="button_path_1">Path 1</string>
+    <string name="button_path_2">Path 2</string>
+    <string name="button_path_3">Path 3</string>
+    <string name="button_final_screen">Final Screen</string>
+    <string name="button_moving">Press me</string>
+</resources>
